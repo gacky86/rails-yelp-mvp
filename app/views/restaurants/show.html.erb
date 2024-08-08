@@ -1,0 +1,56 @@
+<div class="banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://loremflickr.com/1900/500/restaurant,<%= @restaurant.category.downcase %>?lock=<%= @restaurant.id %>)">
+  <div class="container">
+    <h1><%= @restaurant.name %></h1>
+  </div>
+</div>
+<p class="m-3">
+  <%= link_to '< Restaurants', restaurants_path, class: 'btn-light opacity-50 text-decoration-none' %>
+</p>
+<div class="restaurant_info">
+  <div class="card text-center">
+    <div class="card-header">
+      Information
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Category</h5>
+      <i class="fa-solid fa-utensils"></i>
+      <p class="card-text"><%= @restaurant.category %></p>
+      <h5 class="card-title">Location</h5>
+      <i class="fa-solid fa-location-dot"></i>
+      <p class="card-text"><%= @restaurant.address %></p>
+      <h5 class="card-title">Phone number</h5>
+      <i class="fa-solid fa-phone"></i>
+      <p class="card-text"><%= @restaurant.phone_number %></p>
+      <a href="#" class="btn btn-primary">Reservation</a>
+    </div>
+  </div>
+</div>
+
+<div class="review">
+<div class="card text-center">
+    <div class="card-header">
+      Reviews
+    </div>
+    <div class="card-body">
+      <% @restaurant.reviews.each do |review| %>
+        <div class="border">
+          <% review.rating.times do %>
+            <i class="fas fa-star checked"></i>
+          <% end %>
+          <% (5 - review.rating).times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <p class="card-text"><%= review.content %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="review_input">
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :rating, collection: (0..5).to_a %>
+    <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <% end %>
+</div>

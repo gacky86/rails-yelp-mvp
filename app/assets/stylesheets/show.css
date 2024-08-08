@@ -1,0 +1,15 @@
+.restaurant_info {
+  width: 60%;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.review {
+  width: 60%;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.review .checked {
+  color: orange;
+}

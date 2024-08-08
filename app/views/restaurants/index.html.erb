@@ -1,0 +1,13 @@
+<div class="banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://loremflickr.com/1900/500/cars);">
+  <div class="container">
+    <h1>Restaurants</h1>
+  </div>
+</div>
+
+<div class="container p-3">
+  <div class="cards">
+    <% @restaurants.each do |restaurant| %>
+      <%= render 'restaurants/card', restaurant: restaurant %>
+    <% end %>
+  </div>
+</div>
